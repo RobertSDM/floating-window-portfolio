@@ -5,7 +5,7 @@ import type { SnapState } from "@/domain/types";
 const DEFAULT_WIDTH = 800;
 const DEFAULT_HEIGHT = 520;
 const MAX_WINDOWS = 3;
-const SNAP_THRESHOLD = 20;
+export const SNAP_THRESHOLD = 5;
 
 /**
  * Creates a new WindowEntity centered in the viewport for the given project.

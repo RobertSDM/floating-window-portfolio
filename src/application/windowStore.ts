@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type { WindowEntity } from "@/domain/entities/Window";
+import { SnapCords, SnapState } from "@/domain/types";
 
 interface WindowStore {
     windows: WindowEntity[];
@@ -15,6 +16,20 @@ interface WindowStore {
 
     /** Replaces the entire windows array. */
     setWindows: (windows: WindowEntity[]) => void;
+
+    /**
+     * Transient snap preview state. Null when no drag is active.
+     * Stored globally so SnapPreview can be rendered in page.tsx, outside the
+     * Window transform context that would break position: fixed.
+     */
+    snapPreview: SnapState | null;
+    snapOrigin: SnapCords | null;
+
+    /** Updates the snap preview state during a window drag. */
+    setSnapPreview: (
+        snapPreview: SnapState | null,
+        snapOrigin: SnapCords | null,
+    ) => void;
 }
 
 export const useWindowStore = create<WindowStore>((set) => ({
@@ -34,4 +49,10 @@ export const useWindowStore = create<WindowStore>((set) => ({
         })),
 
     setWindows: (windows) => set({ windows }),
+
+    snapPreview: null,
+    snapOrigin: null,
+
+    setSnapPreview: (snapPreview, snapOrigin) =>
+        set({ snapPreview, snapOrigin }),
 }));
