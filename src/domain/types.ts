@@ -11,3 +11,9 @@ export type SnapState = "free" | "left" | "right" | "fullscreen";
  * window component in the presentation layer.
  */
 export type WindowType = "cli" | "web" | "api";
+
+
+/**
+ * Represents the coordinates for a snap state.
+ */
+export type SnapCords = {x: number, y: number}
