@@ -46,6 +46,20 @@ export function focusWindow(
 }
 
 /**
+ * Updates the snapState of the window with the given id.
+ * Free-position coordinates (x, y, width, height) are always preserved in the
+ * entity regardless of snap state, so no additional logic is needed to restore
+ * them when the window returns to 'free'.
+ */
+export function setSnapState(
+    id: string,
+    snapState: SnapState,
+    windows: WindowEntity[],
+): WindowEntity[] {
+    return windows.map((w) => (w.id === id ? { ...w, snapState } : w));
+}
+
+/**
  * Computes the SnapState for a window based on the current cursor position.
  * A snap is triggered when the cursor is within SNAP_THRESHOLD pixels of a
  * viewport edge. Dragging to the top edge snaps to fullscreen, left and right
