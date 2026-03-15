@@ -37,9 +37,12 @@ export function useWindowManager(): windowManagerReturn {
      */
     function handleOpenWindow(project: Project): void {
         if (windows.length >= MAX_WINDOWS) closeWindow(windows[0].id);
-        const window = openWindow(project, windows);
+        if (windows.find((w) => w.projectId === project.id)) return;
 
-        addWindow(window!);
+        const currentWindows = useWindowStore.getState().windows;
+        const newWindow = openWindow(project, currentWindows);
+
+        if (newWindow) addWindow(newWindow);
     }
 
     /**
