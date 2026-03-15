@@ -5,6 +5,7 @@ import {
     openWindow,
     focusWindow,
     setSnapState,
+    MAX_WINDOWS,
 } from "@/application/windowUseCases";
 import { useWindowStore } from "@/application/windowStore";
 import { WindowEntity } from "@/domain/entities/Window";
@@ -12,7 +13,7 @@ import { SnapState } from "@/domain/types";
 
 type windowManagerReturn = {
     windows: WindowEntity[];
-    openWindow: (project: Project) => boolean;
+    openWindow: (project: Project) => void;
     closeWindow: (id: string) => void;
     focusWindow: (id: string) => void;
     updateWindow: (id: string, changes: Partial<WindowEntity>) => void;
@@ -34,12 +35,11 @@ export function useWindowManager(): windowManagerReturn {
      * Creates a new window for the given project and adds it to the store.
      * Returns false if the maximum number of open windows has been reached.
      */
-    function handleOpenWindow(project: Project): boolean {
+    function handleOpenWindow(project: Project): void {
+        if (windows.length >= MAX_WINDOWS) closeWindow(windows[0].id);
         const window = openWindow(project, windows);
-        if (!window) return false;
 
-        addWindow(window);
-        return true;
+        addWindow(window!);
     }
 
     /**

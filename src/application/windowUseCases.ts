@@ -4,7 +4,7 @@ import type { SnapState } from "@/domain/types";
 
 const DEFAULT_WIDTH = 800;
 const DEFAULT_HEIGHT = 520;
-const MAX_WINDOWS = 3;
+export const MAX_WINDOWS = 3;
 export const SNAP_THRESHOLD = 5;
 
 /**
