@@ -35,7 +35,7 @@ export function ProjectCard({ project, openWindow }: Props) {
     return (
         <button
             onClick={() => openWindow(project)}
-            className={`w-full max-w-48 cursor-pointer rounded-lg border border-card-border bg-white p-5 text-left transition-shadow ${styles.shadow}`}
+            className={`w-full max-w-64 cursor-pointer rounded-lg border border-card-border bg-white p-5 text-left transition-shadow ${styles.shadow}`}
         >
             <div className="mb-1.5 flex items-center gap-2">
                 <span className="text-[15px] font-bold text-gray-900">
