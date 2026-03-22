@@ -2,12 +2,11 @@ import type { WindowType } from "@/domain/types";
 
 type CLIConfig = {
     project: string;
-    /** Arguments pre-filled in the input when the window opens. */
+    defaultCommand: string;
     defaultArgs?: string[];
 };
 
 type WebConfig = {
-    /** URL of the externally hosted project loaded inside the iframe. */
     url: string;
 };
 
@@ -22,10 +21,6 @@ type APIEndpoint = {
 
 type APIConfig = {
     baseUrl: string;
-    /**
-     * When true, requests are routed through /api/proxy instead of being called
-     * directly from the browser.
-     */
     proxied?: boolean;
     endpoints: APIEndpoint[];
 };

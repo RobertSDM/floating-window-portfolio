@@ -7,5 +7,8 @@ type WebEntry = { type: "web"; data: { url: string } };
 type ProjectEntry = CLIEntry | APIEntry | WebEntry;
 
 export const projectRegistry: Record<string, ProjectEntry> = {
-    clc: { type: "cli", data: { bin: path.resolve(process.cwd(), "bin/clc") } },
+    clc: {
+        type: "cli",
+        data: { bin: path.resolve(process.cwd(), "bin/clc.exe") },
+    },
 };
