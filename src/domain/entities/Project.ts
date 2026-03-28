@@ -29,6 +29,7 @@ type ProjectBase<T extends WindowType, C> = {
     id: string;
     title: string;
     description: string;
+    repoLink: string;
     tags?: string[];
     type: T;
     windowConfig: C;
