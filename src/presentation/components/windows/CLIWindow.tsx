@@ -13,7 +13,7 @@ type HistoryEntry = {
 };
 
 const MAX_HISTORY = 20;
-const SPINNER_FRAMES = ["/", "-", "\\", "|"];
+const SPINNER_FRAMES = ["-", "o", "O"];
 
 /**
  * Simulates a terminal REPL for CLI projects. Sends user arguments to the
